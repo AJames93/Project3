@@ -12,8 +12,6 @@ df = pd.read_csv("data.csv")
 db = client.data_db
 db.collection.insert_many(df.to_dict("records"))
 
-
-
 @app.route("/")
 def home():
     newDict=[]
