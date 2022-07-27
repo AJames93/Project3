@@ -3,7 +3,7 @@ var streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-// Initialize all the LayerGroups that we'll use.
+// Initialize all the LayerGroups.
 var layers = {
   AMERICAN: new L.LayerGroup(),
   BAR: new L.LayerGroup(),
@@ -28,7 +28,7 @@ var layers = {
   STEAKHOUSE: new L.LayerGroup(),
 };
 
-// Create the map with our layers.
+// Create the map with layers.
 var map = L.map("map-id", {
   center: [36.7783, -119.4179],
   zoom: 7,
@@ -225,14 +225,14 @@ var icons = {
   })
 };
 
-// Perform an API call to the Citi Bike station information endpoint.
-d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_information.json").then(function(infoRes) {
+// Perform a json call.
+d3.json("/DATA/DATA.json", function(json) {
+    //rendering logic here
+}
 
-  // When the first API call completes, perform another call to the Citi Bike station status endpoint.
-  d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_status.json").then(function(statusRes) {
-    var updatedAt = infoRes.last_updated;
-    var stationStatus = statusRes.data.stations;
-    var stationInfo = infoRes.data.stations;
+
+  // When the first call completes, perform another call to the type endpoint.
+  
 
     // Create an object to keep the number of markers in each layer.
     var restaurantCount = {
@@ -307,14 +307,3 @@ d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_information.json").then(fu
   });
 });
 
-// Update the legend's innerHTML with the last updated time and station count.
-function updateLegend(time, stationCount) {
-  document.querySelector(".legend").innerHTML = [
-    "<p>Updated: " + moment.unix(time).format("h:mm:ss A") + "</p>",
-    "<p class='out-of-order'>Out of Order Stations: " + stationCount.OUT_OF_ORDER + "</p>",
-    "<p class='coming-soon'>Stations Coming Soon: " + stationCount.COMING_SOON + "</p>",
-    "<p class='empty'>Empty Stations: " + stationCount.EMPTY + "</p>",
-    "<p class='low'>Low Stations: " + stationCount.LOW + "</p>",
-    "<p class='healthy'>Healthy Stations: " + stationCount.NORMAL + "</p>"
-  ].join("");
-}
