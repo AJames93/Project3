@@ -1,10 +1,11 @@
 
 
 .navbar {
-    display: flex;
+    overflow: hidden;
+    background-color: darkgrey;
+    position: fixed;
+    top: 0;
     width: 100%;
-    justify-content: center;
-    color: grey;
 }
 .center {
     display: flex;
