@@ -1,0 +1,30 @@
+
+
+.navbar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: grey;
+}
+.center {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.right {
+    display: flex;
+    width: 90%;
+    justify-content: right;
+    margin: auto;
+    text-align: center;
+}
+.left {
+    display: flex;
+    width: 90%;
+    justify-content: left;
+    margin: auto;
+    text-align: center;
+}

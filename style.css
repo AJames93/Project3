@@ -2,3 +2,9 @@
     color: purple; /* single line comment */
     text-decoration: underline;
 }
+
+.center {
+    border: 5px solid #FFFF00;
+    display: flex;
+    justify-content: center;
+}
