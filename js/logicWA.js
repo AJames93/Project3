@@ -30,8 +30,8 @@ var layers = {
 
 // Create the map with our layers.
 var map = L.map("map-id", {
-  center: [39.8283, -98.5795],
-  zoom: 5,
+  center: [47.7511, -120.7401],
+  zoom: 8,
   layers: [
     layers.AMERICAN,
     layers.BAR,
@@ -118,7 +118,7 @@ var icons = {
   BARBECUE: L.ExtraMarkers.icon({
     icon: "ion-minus-circled",
     iconColor: "white",
-    markerColor: "blue-dark",
+    markerColor: "maroon",
     shape: "penta"
   }),
   CAFE: L.ExtraMarkers.icon({
@@ -226,7 +226,7 @@ var icons = {
 };
 
 // Perform an API call to the Citi Bike station information endpoint.
-d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_information.json").then(function(infoRes) {
+d3.csv().then(function(infoRes) {
 
   // When the first API call completes, perform another call to the Citi Bike station status endpoint.
   d3.json("https://gbfs.citibikenyc.com/gbfs/en/station_status.json").then(function(statusRes) {
